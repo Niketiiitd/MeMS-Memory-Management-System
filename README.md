@@ -32,6 +32,7 @@ None.
 
 Output:
 None.
+
 ---------------------------------------------------------------------------------------------------
 Function: mems_finish()
 
@@ -43,6 +44,7 @@ None.
 
 Output:
 None.
+
 ---------------------------------------------------------------------------------------------------
 Function: mems_malloc(size_t size)
 
@@ -51,9 +53,10 @@ Allocates memory of the specified size in the MeMS system. If no suitable segmen
 
 Input:
 size (type: size_t) - The size of memory to allocate.
-Output:
 
+Output:
 MeMS virtual address.
+
 ---------------------------------------------------------------------------------------------------
 Function: mems_print_stats()
 
@@ -65,6 +68,7 @@ None.
 
 Output:
 None (prints information to the standard output).
+
 ---------------------------------------------------------------------------------------------------
 Function: mems_get(void* v_ptr)
 
@@ -76,6 +80,7 @@ v_ptr (type: void*) - MeMS virtual address.
 
 Output:
 MeMS physical address.
+
 ---------------------------------------------------------------------------------------------------
 Function: mems_free(void* v_ptr)
 
@@ -87,10 +92,12 @@ v_ptr (type: void*) - MeMS virtual address to be freed.
 
 Output:
 None.
+
 ---------------------------------------------------------------------------------------------------
 Global Variables:
 
 Detail the global variables utilized in your code, such as free_list_head and mems_heap_start, explaining their significance.
+
 ---------------------------------------------------------------------------------------------------
 
 
