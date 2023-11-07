@@ -16,7 +16,7 @@ $ ./example
 2. We do not set the total number of pages to 0 after using mems finish since mems finish is used at the end to deallocate memory. Therefore, the pages used by our code in one run will remain the same.
 Introduction:
 
-3. Made some new functions for clear understanding of code. 
+3. Made some additional functions for better flow of code. 
 
 The MeMS system manages memory allocation and deallocation within a virtual address space.
 It maintains a free list of memory segments (HOLEs) and allocates memory when requested by user programs.
@@ -27,82 +27,7 @@ https://github.com/Niketiiitd/OS_ASS3.git
 
 ----------------------------------------------------------------------------------------------------
 
-### Function: mems_init()
+### Approach :
 
-Description:
-Initializes the MeMS system, creating the initial data structures.
-
-Input:
-None.
-
-Output:
-None.
-
----------------------------------------------------------------------------------------------------
-### Function: mems_finish()
-
-Description:
-Releases all memory used by the MeMS system and performs cleanup.
-
-Input:
-None.
-
-Output:
-None.
-
----------------------------------------------------------------------------------------------------
-### Function: mems_malloc(size_t size)
-
-Description:
-Allocates memory of the specified size in the MeMS system. If no suitable segment is found in the free list, it requests memory from the OS.
-
-Input:
-size (type: size_t) - The size of memory to allocate.
-
-Output:
-MeMS virtual address.
-
----------------------------------------------------------------------------------------------------
-### Function: mems_print_stats()
-
-Description:
-Prints statistics about the MeMS system, including the number of pages used, unused memory, and details of nodes in the main chain and sub-chain.
-
-Input:
-None.
-
-Output:
-None (prints information to the standard output).
-
----------------------------------------------------------------------------------------------------
-### Function: mems_get(void* v_ptr)
-
-Description:
-Returns the MeMS physical address mapped to a MeMS virtual address.
-
-Input:
-v_ptr (type: void*) - MeMS virtual address.
-
-Output:
-MeMS physical address.
-
----------------------------------------------------------------------------------------------------
-### Function: mems_free(void* v_ptr)
-
-Description:
-Frees memory pointed to by a MeMS virtual address and adds it to the free list. Merges adjacent HOLEs for efficiency.
-
-Input:
-v_ptr (type: void*) - MeMS virtual address to be freed.
-
-Output:
-None.
-
----------------------------------------------------------------------------------------------------
-### Global Variables:
-
-Detail the global variables utilized in your code, such as free_list_head and mems_heap_start, explaining their significance.
-
----------------------------------------------------------------------------------------------------
 
 
