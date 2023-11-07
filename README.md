@@ -25,7 +25,7 @@ It maintains a free list of memory segments (HOLEs) and allocates memory when re
 Function: mems_init()
 
 Description:
-Initializes the MeMS system, creating the initial data structures.
+Initializes the MeMS system, creating the initial data structures.\n
 Input:
 None.
 Output:
