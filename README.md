@@ -38,7 +38,7 @@ https://github.com/Niketiiitd/OS_ASS3.git
 4. mems_print_stats() prints statistics about the MeMS system. It displays the total number of pages used, the total unused memory (memory in the free list), the length of the main chain, and the lengths of each sub-chain.
 
 5. mems_get(void* v_ptr) takes a MeMS virtual address as input and returns the corresponding MeMS physical address by searching the MeMS data structures. It iterates through the MainChainNodes and SubChainNodes to find the match and calculate the offset.
-
+   
 6. mems_free(void *v_ptr) frees the memory associated with a given MeMS virtual address. It marks the corresponding SubChainNode as a HOLE and may merge adjacent HOLEs if they exist.
 
 ----------------------------------------------------------------------------------------------------
