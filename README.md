@@ -9,7 +9,7 @@ $ make
 $ ./example
 ```
 ----------------------------------------------------------------------------------------------------
-List of Assumptions:
+### List of Assumptions:
 
 1. We reassign the value of MEMS virtual address every time a process node becomes free to cover all possible edge cases that may arise.
 
@@ -22,7 +22,7 @@ The MeMS system manages memory allocation and deallocation within a virtual addr
 It maintains a free list of memory segments (HOLEs) and allocates memory when requested by user programs.
 
 ----------------------------------------------------------------------------------------------------
-Function: mems_init()
+### Function: mems_init()
 
 Description:
 Initializes the MeMS system, creating the initial data structures.
@@ -34,7 +34,7 @@ Output:
 None.
 
 ---------------------------------------------------------------------------------------------------
-Function: mems_finish()
+### Function: mems_finish()
 
 Description:
 Releases all memory used by the MeMS system and performs cleanup.
@@ -46,7 +46,7 @@ Output:
 None.
 
 ---------------------------------------------------------------------------------------------------
-Function: mems_malloc(size_t size)
+### Function: mems_malloc(size_t size)
 
 Description:
 Allocates memory of the specified size in the MeMS system. If no suitable segment is found in the free list, it requests memory from the OS.
@@ -58,7 +58,7 @@ Output:
 MeMS virtual address.
 
 ---------------------------------------------------------------------------------------------------
-Function: mems_print_stats()
+### Function: mems_print_stats()
 
 Description:
 Prints statistics about the MeMS system, including the number of pages used, unused memory, and details of nodes in the main chain and sub-chain.
@@ -70,7 +70,7 @@ Output:
 None (prints information to the standard output).
 
 ---------------------------------------------------------------------------------------------------
-Function: mems_get(void* v_ptr)
+### Function: mems_get(void* v_ptr)
 
 Description:
 Returns the MeMS physical address mapped to a MeMS virtual address.
@@ -82,7 +82,7 @@ Output:
 MeMS physical address.
 
 ---------------------------------------------------------------------------------------------------
-Function: mems_free(void* v_ptr)
+### Function: mems_free(void* v_ptr)
 
 Description:
 Frees memory pointed to by a MeMS virtual address and adds it to the free list. Merges adjacent HOLEs for efficiency.
@@ -94,7 +94,7 @@ Output:
 None.
 
 ---------------------------------------------------------------------------------------------------
-Global Variables:
+### Global Variables:
 
 Detail the global variables utilized in your code, such as free_list_head and mems_heap_start, explaining their significance.
 
