@@ -16,7 +16,7 @@ $ ./example
 2. We do not set the total number of pages to 0 after using mems finish since mems finish is used at the end to deallocate memory. Therefore, the pages used by our code in one run will remain the same.
 Introduction:
 
-3. Made some additional functions for better flow of code. 
+3. Made some additional functions for better code flow. 
 
 The MeMS system manages memory allocation and deallocation within a virtual address space.
 It maintains a free list of memory segments (HOLEs) and allocates memory when requested by user programs.
