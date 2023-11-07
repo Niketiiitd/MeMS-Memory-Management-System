@@ -193,7 +193,7 @@ void* give_vir2(void* i) {
 
         while (current_sub != NULL) {
             if (current_sub->mem_ptr == i) {
-                void* mems_addr = (mems_of);
+                void* mems_addr = (void*)(uintptr_t)mems_of;
                 mems_of += current_sub->size;
                 return mems_addr;
             }
@@ -251,7 +251,7 @@ void* give_last2(void* i) {
             if (current_sub->mem_ptr == i) {
                 int lastpoint = give_vir(i) + current_sub->size;
                 lastpoint--;
-                return (void*) lastpoint;
+                return (void*)(uintptr_t)lastpoint;
             }
 
             previous_sub = current_sub;
@@ -416,7 +416,7 @@ void* mems_malloc(size_t size) {
     void* mems_addr = (void*)(mems_offset);
     new_process_node->VA = mems_addr;
     mems_offset += size;
-    new_hole_node->VA=mems_offset;
+    new_hole_node->VA = (void*)(uintptr_t)mems_offset;
     return mems_addr;
     
 
@@ -435,6 +435,7 @@ Returns: Nothing but should print the necessary information on STDOUT
 */
 void mems_print_stats() {
     // Variables to keep track of statistics
+    
     int MainChainLength = 0;
     size_t totalUnusedMemory = 0;
     int arr[1000000];
@@ -498,7 +499,7 @@ void mems_print_stats() {
         printf(",");
     }
     printf("]\n");
-
+    printf("--------------------------------------------------\n");
 }
 
 
