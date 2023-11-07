@@ -29,15 +29,15 @@ https://github.com/Niketiiitd/OS_ASS3.git
 
 ### Approach :
 
-1.mems_init() initializes the MeMS system. It initializes the free list and the starting virtual address for the MeMS heap using the mmap system call.
+1. mems_init() initializes the MeMS system. It initializes the free list and the starting virtual address for the MeMS heap using the mmap system call.
 
-2.mems_finish() is responsible for cleaning up the MeMS system. It unmaps all allocated memory regions using the munmap system call, including MainChainNodes and SubChainNodes. It also unmaps the free list head and the MeMS heap starting address.
+2. mems_finish() is responsible for cleaning up the MeMS system. It unmaps all allocated memory regions using the munmap system call, including MainChainNodes and SubChainNodes. It also unmaps the free list head and the MeMS heap starting address.
 
-3.mems_malloc(size_t size) allocates memory of the specified size using the MeMS system. It searches the free list for a suitable hole segment with enough space. If a suitable hole is found, it can split the hole into a PROCESS segment and a new HOLE segment. If not, it requests memory from the operating system using mmap and creates a new MainChainNode and SubChainNodes to manage the allocated memory. It returns the MeMS virtual address for the allocated memory.
+3. mems_malloc(size_t size) allocates memory of the specified size using the MeMS system. It searches the free list for a suitable hole segment with enough space. If a suitable hole is found, it can split the hole into a PROCESS segment and a new HOLE segment. If not, it requests memory from the operating system using mmap and creates a new MainChainNode and SubChainNodes to manage the allocated memory. It returns the MeMS virtual address for the allocated memory.
 
-4.mems_print_stats() prints statistics about the MeMS system. It displays the total number of pages used, the total unused memory (memory in the free list), the length of the main chain, and the lengths of each sub-chain.
+4. mems_print_stats() prints statistics about the MeMS system. It displays the total number of pages used, the total unused memory (memory in the free list), the length of the main chain, and the lengths of each sub-chain.
 
-5.mems_get(void* v_ptr) takes a MeMS virtual address as input and returns the corresponding MeMS physical address by searching the MeMS data structures. It iterates through the MainChainNodes and SubChainNodes to find the match and calculate the offset.
+5. mems_get(void* v_ptr) takes a MeMS virtual address as input and returns the corresponding MeMS physical address by searching the MeMS data structures. It iterates through the MainChainNodes and SubChainNodes to find the match and calculate the offset.
 
 6.mems_free(void *v_ptr) frees the memory associated with a given MeMS virtual address. It marks the corresponding SubChainNode as a HOLE and may merge adjacent HOLEs if they exist.
 
