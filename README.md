@@ -25,9 +25,11 @@ It maintains a free list of memory segments (HOLEs) and allocates memory when re
 Function: mems_init()
 
 Description:
-Initializes the MeMS system, creating the initial data structures.\n
+Initializes the MeMS system, creating the initial data structures.
+
 Input:
 None.
+
 Output:
 None.
 ---------------------------------------------------------------------------------------------------
@@ -35,8 +37,10 @@ Function: mems_finish()
 
 Description:
 Releases all memory used by the MeMS system and performs cleanup.
+
 Input:
 None.
+
 Output:
 None.
 ---------------------------------------------------------------------------------------------------
@@ -44,17 +48,21 @@ Function: mems_malloc(size_t size)
 
 Description:
 Allocates memory of the specified size in the MeMS system. If no suitable segment is found in the free list, it requests memory from the OS.
+
 Input:
 size (type: size_t) - The size of memory to allocate.
 Output:
+
 MeMS virtual address.
 ---------------------------------------------------------------------------------------------------
 Function: mems_print_stats()
 
 Description:
 Prints statistics about the MeMS system, including the number of pages used, unused memory, and details of nodes in the main chain and sub-chain.
+
 Input:
 None.
+
 Output:
 None (prints information to the standard output).
 ---------------------------------------------------------------------------------------------------
@@ -62,8 +70,10 @@ Function: mems_get(void* v_ptr)
 
 Description:
 Returns the MeMS physical address mapped to a MeMS virtual address.
+
 Input:
 v_ptr (type: void*) - MeMS virtual address.
+
 Output:
 MeMS physical address.
 ---------------------------------------------------------------------------------------------------
@@ -71,8 +81,10 @@ Function: mems_free(void* v_ptr)
 
 Description:
 Frees memory pointed to by a MeMS virtual address and adds it to the free list. Merges adjacent HOLEs for efficiency.
+
 Input:
 v_ptr (type: void*) - MeMS virtual address to be freed.
+
 Output:
 None.
 ---------------------------------------------------------------------------------------------------
