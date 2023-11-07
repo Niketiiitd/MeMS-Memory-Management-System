@@ -86,36 +86,48 @@ void mems_finish(){
 	MainChainNode* current_main = free_list_head;
 
     while (current_main != NULL) {
-        SubChainNode* current_sub = current_main->sub_chain;
+    SubChainNode* current_sub = current_main->sub_chain;
 
-        while (current_sub != NULL) {
-            if (current_sub->type == 1) { 
-
-                if (current_sub->mem_ptr != NULL) {
-                    if (munmap(current_sub->mem_ptr, current_sub->size) != 0) {
-                        perror("munmap failed");
-                        exit(1);
-                    }
+    while (current_sub != NULL) {
+        if (current_sub->type == 1) {
+            if (current_sub->mem_ptr != NULL) {
+                if (munmap(current_sub->mem_ptr, current_sub->size) != 0) {
+                    perror("munmap failed");
+                    // Handle error gracefully or exit
                 }
             }
-
-            SubChainNode* temp = current_sub;
-            current_sub = current_sub->right;
-            // Unmap the SubChainNode
-            if (munmap(temp, sizeof(SubChainNode)) != 0) {
-                perror("munmap failed");
-                exit(1);
-            }
         }
 
-        MainChainNode* temp_main = current_main;
-        current_main = current_main->down;
-        // Unmap the MainChainNode
-        if (munmap(temp_main, sizeof(MainChainNode)) != 0) {
+        SubChainNode* temp = current_sub;
+        current_sub = current_sub->right;
+        
+        // Deallocate any dynamically allocated memory within SubChainNode
+        // Example: if (temp->data != NULL) {
+        //     free(temp->data);
+        // }
+
+        // Unmap the SubChainNode
+        if (munmap(temp, sizeof(SubChainNode)) != 0) {
             perror("munmap failed");
-            exit(1);
+            // Handle error gracefully or exit
         }
     }
+
+    MainChainNode* temp_main = current_main;
+    current_main = current_main->down;
+
+    // Deallocate any dynamically allocated memory within MainChainNode
+    // Example: if (temp_main->data != NULL) {
+    //     free(temp_main->data);
+    // }
+
+    // Unmap the MainChainNode
+    if (munmap(temp_main, sizeof(MainChainNode)) != 0) {
+        perror("munmap failed");
+        // Handle error gracefully or exit
+    }
+	}
+
     if (free_list_head != NULL) {
         munmap(free_list_head, sizeof(MainChainNode));
         free_list_head = NULL;
@@ -126,7 +138,6 @@ void mems_finish(){
         mems_heap_start = NULL;
     }   
 }
-
 
 /*
 Allocates memory of the specified size by reusing a segment from the free list if 
