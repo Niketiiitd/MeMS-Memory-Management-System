@@ -14,7 +14,7 @@ $ ./example
 1. We reassign the value of MEMS virtual address every time a process node becomes free to cover all possible edge cases that may arise.
 
 2. We do not set the total number of pages to 0 after using mems finish since mems finish is used at the end to deallocate memory. Therefore, the pages used by our code in one run will remain the same.
-Introduction:
+
 
 3. Made some additional functions for better code flow. 
 
